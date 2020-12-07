@@ -6,7 +6,7 @@ Elasticsearch client for nim-lang
 ## install [develop]
 
 ``` bash
-git clone 
+git clone https://github.com/fossildev/nimastic.git
 
 cd nimastic
 
