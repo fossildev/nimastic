@@ -2,6 +2,8 @@
 
 Elasticsearch client for nim-lang
 
+for spec endpoint, please check [elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html)
+
 
 ## install [develop]
 
@@ -22,7 +24,7 @@ check connection with elasticsearch
 import nimastic, httpclient
 
 #create connection
-var client = elasticBasicClient()
+let client = elasticBasicClient()
 
 let res = client.check()
 
@@ -57,9 +59,9 @@ example cat master
 ``` nim
 import nimastic, httpclient
 
-var client = elasticBasicClient()
+let client = elasticBasicClient()
 
-var req = elasticsearch.CatMaster(Format:"json")
+let req = elasticsearch.CatMaster(Format:"json")
 
 let resMaster = req.Do(client)
 
