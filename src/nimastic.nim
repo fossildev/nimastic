@@ -1,5 +1,5 @@
 import nimastic/transport
-import nimastic/api/[api, catmaster, cataliases, catallocaltion]
+import nimastic/api/[api, catmaster, cataliases, catallocation, catanomalydetectors]
 
 export transport
-export api, catmaster, cataliases, catallocaltion
+export api, catmaster, cataliases, catallocation, catanomalydetectors

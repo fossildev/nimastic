@@ -2,7 +2,7 @@ import strutils, httpclient
 import ../transport
 
 type
-    catAllocation = object
+    catAllocation* = object
          #query params
         NodeId*:            seq[string]
         Bytes*:             string
