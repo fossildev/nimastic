@@ -82,6 +82,43 @@ response
 ]
 ```
 
+example cat allocation
+
+``` nim
+import nimastic, httpclient
+
+var client = elasticBasicClient()
+
+let req = elasticsearch.CatAllocation(
+        Format: "json",
+        V: true,
+        Bytes: "mb",
+        MasterTimeout: "15s"
+    )
+
+let resMaster = req.Do(client)
+
+echo resMaster.body
+```
+
+response 
+
+``` json
+[
+  {
+    "shards":"0",
+    "disk.indices":"0",
+    "disk.used":"36261",
+    "disk.avail":"202574",
+    "disk.total":"238836",
+    "disk.percent":"15",
+    "host":"localhost",
+    "ip":"127.0.0.1",
+    "node":"chan"
+  }
+]
+```
+
 
 
 
@@ -98,7 +135,7 @@ API
 - [x] cat aliases
 - [x] cat allocation
 - [x] cat anomaly detectors
-- [ ] cat count
+- [x] cat count
 - [ ] cat data frame analytics
 - [ ] cat datafeeds
 - [ ] cat health

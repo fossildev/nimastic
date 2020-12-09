@@ -18,7 +18,7 @@ type
         ErrorTrace: bool
         FilterPath: seq[string]
 
-method Do*(this: catAliases,c: var elClient): Response =
+method Do*(this: catAliases,c: var elClient): Response {.base.} =
     
 
     # querz

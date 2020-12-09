@@ -12,13 +12,14 @@ type
         Local*:             bool
         S*:                 seq[string]
         V*:                 bool
-        MasterTimeout*:     int
+        MasterTimeout*:     string
+
         Pretty*:            bool
         Human:              bool
         ErrorTrace:         bool
         FilterPath:         seq[string]
 
-method Do*(this: catAllocation, c: var elClient): Response = 
+method Do*(this: catAllocation, c: var elClient): Response {.base.} = 
 
     # querz
     var q = ""
@@ -66,14 +67,18 @@ method Do*(this: catAllocation, c: var elClient): Response =
     if this.V :
         q.add("&v")
 
+    if this.MasterTimeout != "" :
+        q.add("&master_timeout=" & this.MasterTimeout)
+
     if this.Pretty :
         q.add("&pretty")
+
     
     # add query to elasticsearch.Query
     c.Query = q
     # add method to elasticsearch.Method
     c.Method = HttpGet
-    c.Endpoint = "/_cat/aliases"
+    c.Endpoint = "/_cat/allocation"
 
     if len(this.NodeId) > 0 :
         let aStr = join(this.NodeId, ",")

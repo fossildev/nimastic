@@ -101,7 +101,7 @@ proc checkValidColumn(h: seq[string]): bool =
 
     return valid             
 
-method Do*(this: catAnomalyDitectors, c: var elClient ): Response = 
+method Do*(this: catAnomalyDitectors, c: var elClient ): Response {.base.} = 
 
     var q = ""
 
