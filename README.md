@@ -81,3 +81,66 @@ response
     }
 ]
 ```
+
+
+
+
+
+## TODO
+
+- [x] basic client
+- [ ] auth
+- [ ] round robin connection
+
+API
+
+- [x] check
+- [x] cat aliases
+- [x] cat allocation
+- [x] cat anomaly detectors
+- [ ] cat count
+- [ ] cat data frame analytics
+- [ ] cat datafeeds
+- [ ] cat health
+- [ ] cat indices
+- [x] cat master
+- [ ] cat nodeattrs
+- [ ] cat nodes
+- [ ] cat pending tasks
+- [ ] cat plugins
+- [ ] cat recovery
+- [ ] cat repositories
+- [ ] cat shards
+- [ ] cat segments
+- [ ] cat snapshots
+- [ ] cat task management
+- [ ] cat templates
+- [ ] cat thread pool
+- [ ] cat trained model
+- [ ] cat transforms
+- [ ] cluster allocation explain
+- [ ] cluster get settings
+- [ ] cluster health
+- [ ] cluster reroute
+- [ ] cluster state
+- [ ] cluster stats
+- [ ] cluster update settings
+- [ ] nodes feature usage
+- [ ] nodes hot threads
+- [ ] nodes info
+- [ ] nodes reload secure settings
+- [ ] nodes stats
+- [ ] pending cluster task
+- [ ] remote cluster info
+- [ ] task management
+- [ ] voting configuration exclusions
+- [ ] get CCR stats
+- [ ] create follower
+- [ ] pause follower
+- [ ] resume follower
+- [ ] unfolow
+- [ ] forget follower
+- [ ] get follower stats
+- [ ] get follower info
+- [ ] ...
+
