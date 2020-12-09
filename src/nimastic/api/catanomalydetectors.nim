@@ -2,7 +2,7 @@ import strutils, httpclient
 import ../transport
 
 type
-    catAnomalyDirectors* = object
+    catAnomalyDitectors* = object
         JobId*: string
         AllowNoMatch*: bool
         Bytes*: string
@@ -101,7 +101,7 @@ proc checkValidColumn(h: seq[string]): bool =
 
     return valid             
 
-method Do*(this: catAnomalyDirectors, c: var elClient ): Response = 
+method Do*(this: catAnomalyDitectors, c: var elClient ): Response = 
 
     var q = ""
 

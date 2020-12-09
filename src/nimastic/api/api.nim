@@ -5,5 +5,5 @@ type
         CatMaster* : catMaster
         Cataliases*: catAliases
         CatAllocation*: catAllocation
-        CatAnomalyDirectors*: catAnomalyDirectors
+        CatAnomalyDitectors*: catAnomalyDitectors
         
