@@ -139,7 +139,7 @@ API
 - [x] cat data frame analytics
 - [x] cat datafeeds
 - [x] cat health
-- [ ] cat indices
+- [x] cat indices
 - [x] cat master
 - [ ] cat nodeattrs
 - [ ] cat nodes

@@ -12,7 +12,7 @@ type
         Help*: bool
         IncludeUnloadedSegments*: bool
         Local*: bool
-        MasterTimeout*: int
+        MasterTimeout*: string
         Pri*: bool
         S*: seq[string]
         Time*: string
@@ -89,9 +89,8 @@ method Do* (this: catIndices, c: var elClient): Response {.base.} =
     if this.Local:
         q.add("&local")
 
-    if this.MasterTimeout != 0 :
-        var iTostr = intToStr(this.MasterTimeout)
-        q.add("&master_timeout=" & iTostr)
+    if this.MasterTimeout != "" :
+        q.add("&master_timeout=" & this.MasterTimeout)
 
     if this.Pri:
         q.add("&pri")
