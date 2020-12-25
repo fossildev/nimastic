@@ -148,13 +148,13 @@ API
 - [x] cat recovery
 - [x] cat repositories
 - [x] cat shards
-- [ ] cat segments
-- [ ] cat snapshots
-- [ ] cat task management
-- [ ] cat templates
-- [ ] cat thread pool
-- [ ] cat trained model
-- [ ] cat transforms
+- [x] cat segments
+- [X] cat snapshots
+- [x] cat task management
+- [x] cat templates
+- [x] cat thread pool
+- [x] cat trained model
+- [x] cat transforms
 - [ ] cluster allocation explain
 - [ ] cluster get settings
 - [ ] cluster health
