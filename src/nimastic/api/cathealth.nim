@@ -2,7 +2,7 @@ import strutils, httpclient
 import ../transport
 
 type
-    catHealt* = object
+    catHealth* = object
         #query params
         Format*:            string
         H*:                 seq[string]
@@ -16,7 +16,7 @@ type
         ErrorTrace: bool
         FilterPath: seq[string]
 
-method Do*(this: catHealt, c: var elClient): Response {.base.} =
+method Do*(this: catHealth, c: var elClient): Response {.base.} =
 
     var q = ""
 
