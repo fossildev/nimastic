@@ -2,14 +2,13 @@ import strutils, httpclient
 import ../transport
 
 type
-    catShards* = object
-        Target*: seq[string]
+    catSnapshots* = object
+        Repository*: string
         #query
         Format*: string
-        Bytes*: string
         H*: seq[string]
         Help*: bool
-        Local*: bool
+        IgnoreUnavailable*: bool
         MasterTimeout*: string
         S*: seq[string]
         Time*: string
@@ -20,8 +19,7 @@ type
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-
-method Do*(this: catShards, c: var elClient): Response {.base.} =
+method Do*(this: catSnapshots, c: var elClient): Response {.base.} =
 
     var q = ""
 
@@ -29,18 +27,14 @@ method Do*(this: catShards, c: var elClient): Response {.base.} =
     if this.Format != "" :
         q.add("&format=" & this.Format)
 
-    #bytes
-    if this.Bytes != "" :
-        q.add("&bytes=" & this.Bytes) 
-
     if len(this.H) > 0 :
         q.add("&h=" & join(this.H,","))
 
     if this.Help :
         q.add("&help")
 
-    if this.Local :
-        q.add("&local")
+    if this.IgnoreUnavailable :
+        q.add("&ignore_unavailable")
 
     if this.MasterTimeout != "" :
         q.add("&master_timeout=" & this.MasterTimeout)
@@ -68,11 +62,9 @@ method Do*(this: catShards, c: var elClient): Response {.base.} =
 
     c.Query = q
     c.Method = HttpGet
-    c.Endpoint = "/_cat/shards"
+    c.Endpoint = "/_cat/snapshots"
 
-    if len(this.Target) > 0 :
-        c.Endpoint.add("/" & join(this.Target, ","))
+    if this.Repository != "" :
+        c.Endpoint.add("/" & this.Repository)
 
     return c.estransport()
-
-    

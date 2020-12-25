@@ -2,26 +2,25 @@ import strutils, httpclient
 import ../transport
 
 type
-    catShards* = object
-        Target*: seq[string]
+    catTransforms* = object
+        Transform*: string
         #query
         Format*: string
-        Bytes*: string
+        AllowNoMatch*: bool
+        From*: int
         H*: seq[string]
         Help*: bool
-        Local*: bool
-        MasterTimeout*: string
         S*: seq[string]
+        Size*: string
         Time*: string
         V*: bool
-        
+
         Pretty*: bool
         Human*: bool
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-
-method Do*(this: catShards, c: var elClient): Response {.base.} =
+method Do*(this: catTransforms, c: var elClient): Response {.base.} =
 
     var q = ""
 
@@ -29,24 +28,20 @@ method Do*(this: catShards, c: var elClient): Response {.base.} =
     if this.Format != "" :
         q.add("&format=" & this.Format)
 
-    #bytes
-    if this.Bytes != "" :
-        q.add("&bytes=" & this.Bytes) 
+    if this.AllowNoMatch :
+        q.add("&allow_no_match")
 
-    if len(this.H) > 0 :
-        q.add("&h=" & join(this.H,","))
+    if this.From != 0 :
+        q.add("&from=" & intToStr(this.From))
 
     if this.Help :
         q.add("&help")
 
-    if this.Local :
-        q.add("&local")
-
-    if this.MasterTimeout != "" :
-        q.add("&master_timeout=" & this.MasterTimeout)
-
     if len(this.S) > 0:
         q.add("&s=" & join(this.S, ","))
+
+    if this.Size != "":
+        q.add("&size=" & this.Size)
 
     if this.Time != "" :
         q.add("&time=" & this.Time)
@@ -68,11 +63,9 @@ method Do*(this: catShards, c: var elClient): Response {.base.} =
 
     c.Query = q
     c.Method = HttpGet
-    c.Endpoint = "/_cat/shards"
+    c.Endpoint = "/_cat/transforms"
 
-    if len(this.Target) > 0 :
-        c.Endpoint.add("/" & join(this.Target, ","))
+    if this.Transform != "" :
+        c.Endpoint.add("/" & this.Transform)
 
     return c.estransport()
-
-    

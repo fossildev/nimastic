@@ -2,15 +2,11 @@ import strutils, httpclient
 import ../transport
 
 type
-    catShards* = object
-        Target*: seq[string]
-        #query
+    catTasks* = object
         Format*: string
-        Bytes*: string
         H*: seq[string]
+        Detailed*: bool
         Help*: bool
-        Local*: bool
-        MasterTimeout*: string
         S*: seq[string]
         Time*: string
         V*: bool
@@ -20,8 +16,7 @@ type
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-
-method Do*(this: catShards, c: var elClient): Response {.base.} =
+method Do*(this: catTasks, c: var elClient): Response {.base.} =
 
     var q = ""
 
@@ -29,21 +24,14 @@ method Do*(this: catShards, c: var elClient): Response {.base.} =
     if this.Format != "" :
         q.add("&format=" & this.Format)
 
-    #bytes
-    if this.Bytes != "" :
-        q.add("&bytes=" & this.Bytes) 
-
     if len(this.H) > 0 :
         q.add("&h=" & join(this.H,","))
 
+    if this.Detailed :
+        q.add("&detailed")
+
     if this.Help :
         q.add("&help")
-
-    if this.Local :
-        q.add("&local")
-
-    if this.MasterTimeout != "" :
-        q.add("&master_timeout=" & this.MasterTimeout)
 
     if len(this.S) > 0:
         q.add("&s=" & join(this.S, ","))
@@ -68,11 +56,6 @@ method Do*(this: catShards, c: var elClient): Response {.base.} =
 
     c.Query = q
     c.Method = HttpGet
-    c.Endpoint = "/_cat/shards"
-
-    if len(this.Target) > 0 :
-        c.Endpoint.add("/" & join(this.Target, ","))
+    c.Endpoint = "/_cat/tasks"
 
     return c.estransport()
-
-    
