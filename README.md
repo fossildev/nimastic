@@ -142,9 +142,9 @@ API
 - [x] cat indices
 - [x] cat master
 - [x] cat nodeattrs
-- [ ] cat nodes
-- [ ] cat pending tasks
-- [ ] cat plugins
+- [x] cat nodes
+- [x] cat pending tasks
+- [x] cat plugins
 - [ ] cat recovery
 - [ ] cat repositories
 - [ ] cat shards
