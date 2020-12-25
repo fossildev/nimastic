@@ -11,18 +11,17 @@ type
         S*: seq[string]
         V*: bool
 
+        Pretty*: bool
+        Human*: bool
+        ErrorTrace*: bool
+        FilterPath*: seq[string]
+
 method Do*(this: catCount, c: var elClient ): Response {.base.} = 
     var q = ""
 
-    if this.Format != "":
-        case this.Format:
-        of "text": q.add("format=text")
-        of "json": q.add("format=json")
-        of "smile":  q.add("format=smile")
-        of "yaml":  q.add("format=yaml")
-        of "cbor": q.add("format=cbor")
-        else:
-            echo "not found format " & this.Format
+    # format 
+    if this.Format != "" :
+        q.add("&format=" & this.Format)
 
     if len(this.H) > 0 :
         let hStr = join(this.H, ",")
@@ -37,6 +36,18 @@ method Do*(this: catCount, c: var elClient ): Response {.base.} =
 
     if this.V :
         q.add("&v")
+
+    if this.Pretty :
+        q.add("&pretty")
+
+    if this.Human :
+        q.add("&human")
+
+    if this.ErrorTrace :
+        q.add("&error_trace") 
+
+    if len(this.FilterPath) > 0 :
+        q.add("&filter_path=" & join(this.FilterPath, ",") )
 
      # add query to elasticsearch.Query
     c.Query = q

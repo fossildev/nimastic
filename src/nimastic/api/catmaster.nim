@@ -12,10 +12,10 @@ type
         V*:                 bool
         ExpandWildcards*:   string
 
-        Pretty*:    bool
-        Human:      bool
-        ErrorTrace: bool
-        FilterPath: seq[string]
+        Pretty*: bool
+        Human*: bool
+        ErrorTrace*: bool
+        FilterPath*: seq[string]
 
 
 method Do*(this: catMaster, c: var elClient): Response {.base.} =
@@ -24,16 +24,8 @@ method Do*(this: catMaster, c: var elClient): Response {.base.} =
     var q = ""
     
     # format += 
-    if this.Format == "text":
-        q.add("format=text")
-    elif this.Format == "json" :
-        q.add("format=json")
-    elif this.Format == "smile":
-        q.add("format=smile")
-    elif this.Format == "yaml":
-        q.add("format=yaml")
-    elif this.Format == "cbor":
-        q.add("format=cbor")
+    if this.Format != "" :
+        q.add("&format=" & this.Format)
 
     #h (Optional, string) Comma-separated list of column names to display.    
     if len(this.H) > 0 :
@@ -56,6 +48,15 @@ method Do*(this: catMaster, c: var elClient): Response {.base.} =
 
     if this.Pretty :
         q.add("&pretty")
+
+    if this.Human :
+        q.add("&human")
+
+    if this.ErrorTrace :
+        q.add("&error_trace") 
+
+    if len(this.FilterPath) > 0 :
+        q.add("&filter_path=" & join(this.FilterPath, ",") )
     
     # add query to elasticsearch.Query
     c.Query = q

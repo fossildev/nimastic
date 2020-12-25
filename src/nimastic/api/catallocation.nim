@@ -14,39 +14,23 @@ type
         V*:                 bool
         MasterTimeout*:     string
 
-        Pretty*:            bool
-        Human:              bool
-        ErrorTrace:         bool
-        FilterPath:         seq[string]
+        Pretty*: bool
+        Human*: bool
+        ErrorTrace*: bool
+        FilterPath*: seq[string]
 
 method Do*(this: catAllocation, c: var elClient): Response {.base.} = 
 
     # querz
     var q = ""
     
-    # format += 
-    if this.Format == "text":
-        q.add("format=text")
-    elif this.Format == "json" :
-        q.add("format=json")
-    elif this.Format == "smile":
-        q.add("format=smile")
-    elif this.Format == "yaml":
-        q.add("format=yaml")
-    elif this.Format == "cbor":
-        q.add("format=cbor")
-
-    if this.Bytes != "":
-        case this.Bytes:
-        of "b": q.add("&bytes=b")
-        of "kb": q.add("&bytes=kb")
-        of "mb": q.add("&bytes=mb")
-        of "gb": q.add("&bytes=gb")
-        of "tb": q.add("&bytes=tb")
-        of "pb": q.add("&bytes=pb")
-        else: 
-            echo "not found"
-            #add exeption in logger
+    # format 
+    if this.Format != "" :
+        q.add("&format=" & this.Format)
+    
+     #bytes
+    if this.Bytes != "" :
+        q.add("&bytes=" & this.Bytes)    
 
     #h (Optional, string) Comma-separated list of column names to display.    
     if len(this.H) > 0 :
@@ -72,6 +56,15 @@ method Do*(this: catAllocation, c: var elClient): Response {.base.} =
 
     if this.Pretty :
         q.add("&pretty")
+
+    if this.Human :
+        q.add("&human")
+
+    if this.ErrorTrace :
+        q.add("&error_trace") 
+
+    if len(this.FilterPath) > 0 :
+        q.add("&filter_path=" & join(this.FilterPath, ",") )
 
     
     # add query to elasticsearch.Query

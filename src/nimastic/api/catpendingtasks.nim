@@ -13,21 +13,18 @@ type
         Time*: string
         V*: bool
 
+        Pretty*: bool
+        Human*: bool
+        ErrorTrace*: bool
+        FilterPath*: seq[string]
+
 method Do*(this: catPendingTasks, c: var elClient): Response {.base.} =
 
     var q = ""
 
     # format 
-    if this.Format == "text":
-        q.add("format=text")
-    elif this.Format == "json" :
-        q.add("format=json")
-    elif this.Format == "smile":
-        q.add("format=smile")
-    elif this.Format == "yaml":
-        q.add("format=yaml")
-    elif this.Format == "cbor":
-        q.add("format=cbor")
+    if this.Format != "" :
+        q.add("&format=" & this.Format)
 
     if len(this.H) > 0 :
         q.add("&h=" & join(this.H, ","))
@@ -46,19 +43,22 @@ method Do*(this: catPendingTasks, c: var elClient): Response {.base.} =
 
     #time
     if this.Time != "" :
-        case this.Time:
-        of "d": q.add("&time=d")
-        of "h": q.add("&time=h")
-        of "m": q.add("&time=m")
-        of "s": q.add("&time=s")
-        of "ms": q.add("&time=ms")
-        of "micros": q.add("&time=micros")
-        of "nanos": q.add("&time=nanos")
-        else: 
-            echo "not found time " & this.Time
+        q.add("&time=" & this.Time)
 
     if this.V :
         q.add("&v")
+
+    if this.Pretty :
+        q.add("&pretty")
+
+    if this.Human :
+        q.add("&human")
+
+    if this.ErrorTrace :
+        q.add("&error_trace") 
+
+    if len(this.FilterPath) > 0 :
+        q.add("&filter_path=" & join(this.FilterPath, ",") )
 
     c.Query = q
     c.Method = HttpGet
