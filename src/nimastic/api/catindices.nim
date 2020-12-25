@@ -38,6 +38,7 @@ proc checkValidExpandWildcards(expands: seq[string]): bool =
             if match :
                 valid = true
             else :
+                echo "column " & val & " not valid"
                 valid = false
                 break checkExpand
 
