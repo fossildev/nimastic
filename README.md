@@ -136,9 +136,9 @@ API
 - [x] cat allocation
 - [x] cat anomaly detectors
 - [x] cat count
-- [ ] cat data frame analytics
-- [ ] cat datafeeds
-- [ ] cat health
+- [x] cat data frame analytics
+- [x] cat datafeeds
+- [x] cat health
 - [ ] cat indices
 - [x] cat master
 - [ ] cat nodeattrs
