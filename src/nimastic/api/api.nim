@@ -1,6 +1,6 @@
 import catmaster, cataliases, catallocation, catanomalydetectors, catcount, 
         catdataframeanalytics, catdatafeeds, catfielddata, cathealth, catindices,
-        catnodeattrs, catnodes
+        catnodeattrs, catnodes, catpendingtasks, catplugins
 
 type
     elasticsearch* = object
@@ -16,5 +16,7 @@ type
         CatIndices*: catIndices
         CatNodeattrs*: catNodeattrs
         CatNodes*: catNodes
+        CatPendingTasks*: catPendingTasks
+        CatPlugins*: catPlugins
         
         
