@@ -145,9 +145,9 @@ API
 - [x] cat nodes
 - [x] cat pending tasks
 - [x] cat plugins
-- [ ] cat recovery
-- [ ] cat repositories
-- [ ] cat shards
+- [x] cat recovery
+- [x] cat repositories
+- [x] cat shards
 - [ ] cat segments
 - [ ] cat snapshots
 - [ ] cat task management
