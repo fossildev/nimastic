@@ -141,7 +141,7 @@ API
 - [x] cat health
 - [x] cat indices
 - [x] cat master
-- [ ] cat nodeattrs
+- [x] cat nodeattrs
 - [ ] cat nodes
 - [ ] cat pending tasks
 - [ ] cat plugins

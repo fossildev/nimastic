@@ -20,7 +20,7 @@ type
 
 method Do*(this: catMaster, c: var elClient): Response {.base.} =
 
-    # querz
+    # query
     var q = ""
     
     # format += 
