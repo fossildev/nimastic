@@ -18,7 +18,7 @@ type
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-method Do*(this: catAnomalyDitectors, c: var elClient ): Response {.base.} = 
+method Do*( c: var elClient, this: catAnomalyDitectors ): Response {.base.} = 
 
     var q = ""
 

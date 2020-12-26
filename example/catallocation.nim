@@ -9,6 +9,6 @@ let req = elasticsearch.CatAllocation(
         MasterTimeout: "15s"
     )
 
-let res = req.Do(client)
+let res = client.Do(req)
 
 echo res.body

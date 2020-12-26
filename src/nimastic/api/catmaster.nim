@@ -18,7 +18,7 @@ type
         FilterPath*: seq[string]
 
 
-method Do*(this: catMaster, c: var elClient): Response {.base.} =
+method Do*( c: var elClient, this: catMaster ): Response {.base.} =
 
     # query
     var q = ""

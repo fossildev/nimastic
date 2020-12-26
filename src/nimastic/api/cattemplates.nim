@@ -19,7 +19,7 @@ type
         FilterPath*: seq[string]
 
 
-method Do*(this: catTemplates, c: var elClient): Response {.base.} =
+method Do*( c: var elClient, this: catTemplates ): Response {.base.} =
 
     var q = ""
 

@@ -4,6 +4,6 @@ var client = elasticBasicClient()
 
 let req = elasticsearch.CatMaster(Format:"json")
 
-let res = req.Do(client)
+let res = client.Do(req)
 
 echo res.body

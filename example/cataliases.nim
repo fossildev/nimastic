@@ -8,6 +8,6 @@ let req = elasticsearch.CatAliases(
         ExpandWildcards:"all"
     )
 
-let res = req.Do(client)
+let res = client.Do(req)
 
 echo res.body

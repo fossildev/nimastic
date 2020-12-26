@@ -18,7 +18,7 @@ type
         FilterPath*: seq[string]
 
 
-method Do*(this: catFieldData, c: var elClient): Response {.base.} =
+method Do*( c: var elClient, this: catFieldData ): Response {.base.} =
     var q = ""
 
     # format 

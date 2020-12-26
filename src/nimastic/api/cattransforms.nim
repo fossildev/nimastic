@@ -20,7 +20,7 @@ type
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-method Do*(this: catTransforms, c: var elClient): Response {.base.} =
+method Do*( c: var elClient, this: catTransforms ): Response {.base.} =
 
     var q = ""
 

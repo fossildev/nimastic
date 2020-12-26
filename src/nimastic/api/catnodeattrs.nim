@@ -18,7 +18,7 @@ type
         FilterPath*: seq[string]
 
 
-method Do*(this: catNodeattrs, c: var elClient): Response {.base.} = 
+method Do*( c: var elClient, this: catNodeattrs ): Response {.base.} = 
 
     var q = ""
 

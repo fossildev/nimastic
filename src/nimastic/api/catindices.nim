@@ -25,7 +25,7 @@ type
         FilterPath*: seq[string]
 
 
-method Do* (this: catIndices, c: var elClient): Response {.base.} =
+method Do* ( c: var elClient, this: catIndices ): Response {.base.} =
 
     var q = ""
 

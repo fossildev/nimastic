@@ -19,7 +19,7 @@ type
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-method Do*(this: catThreadPool, c: var elClient): Response {.base.} =
+method Do*( c: var elClient, this: catThreadPool ): Response {.base.} =
 
     var q = ""
 

@@ -19,7 +19,7 @@ type
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-method Do*(this: catAllocation, c: var elClient): Response {.base.} = 
+method Do*(c: var elClient,this: catAllocation): Response {.base.} = 
 
     # querz
     var q = ""

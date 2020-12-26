@@ -17,7 +17,7 @@ type
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-method Do*(this: catDataFrameAnalytics, c: var elClient): Response {.base.} = 
+method Do*( c: var elClient, this: catDataFrameAnalytics ): Response {.base.} = 
 
     var q = ""
 

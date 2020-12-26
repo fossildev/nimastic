@@ -1,4 +1,4 @@
-import strutils, httpclient, json
+import httpclient, json
 import ../transport
 
 type
@@ -12,7 +12,7 @@ type
         Primary*: bool
         Shard*: int
 
-method Do*(this: clusterAllocationExplain, c: var elClient): Response {.base.} =
+method Do*( c: var elClient, this: clusterAllocationExplain ): Response {.base.} =
 
     var q = ""
     var body = %*{}

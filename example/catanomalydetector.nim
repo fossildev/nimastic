@@ -9,6 +9,6 @@ let req = elasticsearch.CatAnomalyDitectors(
         Time: "s" # s to second
     )
 
-let res = req.Do(client)
+let res = client.Do(req)
 
 echo res.body

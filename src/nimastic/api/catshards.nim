@@ -21,7 +21,7 @@ type
         FilterPath*: seq[string]
 
 
-method Do*(this: catShards, c: var elClient): Response {.base.} =
+method Do*( c: var elClient, this: catShards ): Response {.base.} =
 
     var q = ""
 

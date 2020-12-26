@@ -21,7 +21,7 @@ type
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-method Do*(this: catRecovery, c: var elClient): Response {.base.} =
+method Do*( c: var elClient, this: catRecovery ): Response {.base.} =
 
     var q = ""
 

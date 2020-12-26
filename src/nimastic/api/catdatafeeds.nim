@@ -20,7 +20,7 @@ type
 
 
 
-method Do*(this: catDatafeeds, c: var elClient ) : Response {.base.} =
+method Do*( c: var elClient, this: catDatafeeds ) : Response {.base.} =
     
     var q = ""
 

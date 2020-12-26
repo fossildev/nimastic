@@ -18,7 +18,7 @@ type
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-method Do*(this: catPendingTasks, c: var elClient): Response {.base.} =
+method Do*( c: var elClient, this: catPendingTasks ): Response {.base.} =
 
     var q = ""
 

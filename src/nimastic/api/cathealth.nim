@@ -16,7 +16,7 @@ type
         ErrorTrace*: bool
         FilterPath*: seq[string]
 
-method Do*(this: catHealth, c: var elClient): Response {.base.} =
+method Do*( c: var elClient, this: catHealth ): Response {.base.} =
 
     var q = ""
 

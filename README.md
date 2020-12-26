@@ -63,7 +63,7 @@ let client = elasticBasicClient()
 
 let req = elasticsearch.CatMaster(Format:"json")
 
-let res = req.Do(client)
+let res = client.Do(req)
 
 echo res.body
 ```
@@ -96,7 +96,7 @@ let req = elasticsearch.CatAllocation(
         MasterTimeout: "15s"
     )
 
-let res = req.Do(client)
+let res = client.Do(req)
 
 echo res.body
 ```
