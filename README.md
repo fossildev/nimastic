@@ -155,7 +155,7 @@ API
 - [x] cat thread pool
 - [x] cat trained model
 - [x] cat transforms
-- [ ] cluster allocation explain
+- [x] cluster allocation explain
 - [ ] cluster get settings
 - [ ] cluster health
 - [ ] cluster reroute
