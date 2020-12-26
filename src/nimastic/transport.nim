@@ -12,6 +12,7 @@ type
         # http
         Method*: HttpMethod
         Query*: string
+        Body*: string
         Timeout*: int
         
 
@@ -36,5 +37,5 @@ method estransport*(this: elClient): Response =
     # concat url in elasticsearch.Url with query in elasticsearch.Query
     let uri = this.Url[0] & this.Endpoint & "?" & this.Query
 
-    return client.request(uri, httpMethod = this.Method)
+    return client.request(uri, httpMethod = this.Method, body = this.Body)
 
