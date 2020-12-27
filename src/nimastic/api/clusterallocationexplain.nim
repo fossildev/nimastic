@@ -1,4 +1,4 @@
-import httpclient, json
+import strutils, httpclient, json
 import ../transport
 
 type
@@ -11,6 +11,11 @@ type
         Index*: string
         Primary*: bool
         Shard*: int
+
+        Pretty*: bool
+        Human*: bool
+        ErrorTrace*: bool
+        FilterPath*: seq[string]
 
 method Do*( c: var elClient, this: clusterAllocationExplain ): Response {.base.} =
 
@@ -35,6 +40,18 @@ method Do*( c: var elClient, this: clusterAllocationExplain ): Response {.base.}
         body["primary"] = %* true
 
     body["shard"] = %* this.Shard
+
+    if this.Pretty :
+        q.add("&pretty")
+
+    if this.Human :
+        q.add("&human")
+
+    if this.ErrorTrace :
+        q.add("&error_trace") 
+
+    if len(this.FilterPath) > 0 :
+        q.add("&filter_path=" & join(this.FilterPath, ",") )
 
     c.Query = q
     c.Body = $body

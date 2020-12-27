@@ -2,7 +2,8 @@ import catmaster, cataliases, catallocation, catanomalydetectors, catcount,
         catdataframeanalytics, catdatafeeds, catfielddata, cathealth, catindices,
         catnodeattrs, catnodes, catpendingtasks, catplugins, catrecovery, catrepositories,
         catshards, catsegments, catsnapshots, cattasks, cattemplates, catthreadpool,
-        cattrainedmodels, cattransforms, clusterallocationexplain
+        cattrainedmodels, cattransforms, clusterallocationexplain, clustergetsettings,
+        clusterhealth
 
 type
     elasticsearch* = object
@@ -31,3 +32,5 @@ type
         CatTrainedModels*: catTrainedModels
         CatTransforms*: catTransforms
         ClusterAllocationExplain*: clusterAllocationExplain
+        ClusterGetSettings*: clusterGetSettings
+        ClusterHealth*: clusterHealth
