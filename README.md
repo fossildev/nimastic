@@ -156,8 +156,8 @@ API
 - [x] cat trained model
 - [x] cat transforms
 - [x] cluster allocation explain
-- [ ] cluster get settings
-- [ ] cluster health
+- [x] cluster get settings
+- [x] cluster health
 - [ ] cluster reroute
 - [ ] cluster state
 - [ ] cluster stats
