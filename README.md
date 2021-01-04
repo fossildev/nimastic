@@ -159,7 +159,7 @@ API
 - [x] cluster get settings
 - [x] cluster health
 - [ ] cluster reroute
-- [ ] cluster state
+- [x] cluster state
 - [ ] cluster stats
 - [ ] cluster update settings
 - [ ] nodes feature usage
