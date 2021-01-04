@@ -3,7 +3,7 @@ import catmaster, cataliases, catallocation, catanomalydetectors, catcount,
         catnodeattrs, catnodes, catpendingtasks, catplugins, catrecovery, catrepositories,
         catshards, catsegments, catsnapshots, cattasks, cattemplates, catthreadpool,
         cattrainedmodels, cattransforms, clusterallocationexplain, clustergetsettings,
-        clusterhealth
+        clusterhealth, clusterstateapi
 
 type
     elasticsearch* = object
@@ -34,3 +34,4 @@ type
         ClusterAllocationExplain*: clusterAllocationExplain
         ClusterGetSettings*: clusterGetSettings
         ClusterHealth*: clusterHealth
+        ClusterStateApi*: clusterStateApi
